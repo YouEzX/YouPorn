@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>YouPorn</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0b0b0b;
+      color: #eee;
+    }
+
+    header {
+      background-color: #121212;
+      padding: 40px 0;
+      text-align: center;
+      border-bottom: 1px solid #222;
+    }
+
+    header h1 {
+      font-size: 3em;
+      color: #b38aff;
+      margin: 0;
+      letter-spacing: 1px;
+    }
+
+    section {
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 2em;
+      color: #b38aff;
+      margin-bottom: 40px;
+    }
+
+    .gallery {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      padding: 0 40px;
+    }
+
+    .card {
+      background-color: #1a1a1a;
+      border: 1px solid #2c2c2c;
+      border-radius: 12px;
+      overflow: hidden;
+      width: 320px;
+      box-shadow: 0 0 12px rgba(179, 138, 255, 0.2);
+      transition: transform 0.3s ease;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+      border-color: #b38aff;
+    }
+
+    .card img {
+      width: 100%;
+      display: block;
+    }
+
+    .card-title {
+      padding: 12px;
+      text-align: center;
+      font-size: 1em;
+      color: #ccc;
+      background-color: #121212;
+    }
+
+    .duration-tag {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background-color: rgba(0,0,0,0.7);
+      color: #fff;
+      padding: 4px 8px;
+      font-size: 0.8em;
+      border-radius: 6px;
+    }
+
+    .category-tag {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background-color: #b38aff;
+      color: #000;
+      padding: 4px 8px;
+      font-size: 0.75em;
+      font-weight: bold;
+      border-radius: 6px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      max-width: 800px;
+      width: 90%;
+      background-color: #000;
+      border-radius: 10px;
+      padding: 20px;
+      position: relative;
+      text-align: center;
+    }
+
+    .modal iframe {
+      width: 100%;
+      height: 450px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      color: #b38aff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>YouPorn</h1>
+  </header>
+
+<section>
+  <h2>Videos</h2>
+
+  <div class="gallery">
+    <!-- Tarjeta 1 -->
+    <div class="card" onclick="openModal1()">
+      <span class="category-tag">Nude</span>
+      <img src="https://i.imgur.com/SG0I9VL.png" alt="Miniatura del video">
+      <div class="card-title">Video destacado</div>
+      <span class="duration-tag">0:22</span>
+    </div>
+
+    <!-- Tarjeta 2 -->
+    <div class="card" onclick="openModal2()">
+      <span class="category-tag">Nude</span>
+      <img src="https://i.imgur.com/LClAbxL.png" alt="Miniatura del video">
+      <div class="card-title">Video destacado</div>
+      <span class="duration-tag">1:32</span>
+    </div>
+
+    <!-- Tarjeta 3 -->
+    <div class="card" onclick="openModal3()">
+      <span class="category-tag">Nude</span>
+      <img src="https://i.imgur.com/xr3gdIb.png" alt="Miniatura del video">
+      <div class="card-title">Video destacado</div>
+      <span class="duration-tag">0:37</span>
+    </div>
+
+    <!-- Tarjeta 4 -->
+    <div class="card" onclick="openModal4()">
+      <span class="category-tag">Nude</span>
+      <img src="https://i.imgur.com/MWBirqN.png" alt="Miniatura del video">
+      <div class="card-title">Video destacado</div>
+      <span class="duration-tag">1:12</span>
+    </div>
+
+    <!-- Tarjeta 5 -->
+    <div class="card" onclick="openModal5()">
+      <span class="category-tag">Nude</span>
+      <img src="https://i.imgur.com/vvUImfu.png" alt="Miniatura del video">
+      <div class="card-title">Video destacado</div>
+      <span class="duration-tag">1:20</span>
+    </div>
+
+    <!-- Tarjeta 6 -->
+    <div class="card" onclick="openModal6()">
+      <span class="category-tag">Nude</span>
+      <img src="https://i.imgur.com/ArnJxsj.png" alt="Miniatura del video">
+      <div class="card-title">Video destacado</div>
+      <span class="duration-tag">0:12</span>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Modal 1 -->
+  <div class="modal" id="videoModal1">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal1()">×</span>
+      <iframe src="https://files.catbox.moe/u6qw7b.mp4" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- Modal 2 -->
+  <div class="modal" id="videoModal2">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal2()">×</span>
+      <iframe src="https://files.catbox.moe/l4eze6.mp4" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- Modal 3 -->
+  <div class="modal" id="videoModal3">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal3()">×</span>
+      <iframe src="https://files.catbox.moe/s28tos.mp4" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- Modal 4 -->
+  <div class="modal" id="videoModal4">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal4()">×</span>
+      <iframe src="https://files.catbox.moe/yrnd74.mp4" allowfullscreen></iframe>
+    </div>
+  </div>
+
+<!-- Modal 5 -->
+<div class="modal" id="videoModal5">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal5()">×</span>
+    <iframe src="https://files.catbox.moe/7inaci.mp4" allowfullscreen></iframe>
+  </div>
+</div>
+
+<!-- Modal 6 -->
+<div class="modal" id="videoModal6">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal6()">×</span>
+    <iframe src="https://files.catbox.moe/gsf0cr.mp4" allowfullscreen></iframe>
+  </div>
+</div>
+
+  <script>
+    function openModal1() {
+      document.getElementById("videoModal1").style.display = "flex";
+    }
+
+    function closeModal1() {
+      document.getElementById("videoModal1").style.display = "none";
+    }
+
+    function openModal2() {
+      document.getElementById("videoModal2").style.display = "flex";
+    }
+
+    function closeModal2() {
+      document.getElementById("videoModal2").style.display = "none";
+    }
+
+    function openModal3() {
+      document.getElementById("videoModal3").style.display = "flex";
+    }
+
+    function closeModal3() {
+      document.getElementById("videoModal3").style.display = "none";
+    }
+
+    function openModal4() {
+      document.getElementById("videoModal4").style.display = "flex";
+    }
+
+    function closeModal4() {
+      document.getElementById("videoModal4").style.display = "none";
+    }
+
+    function openModal5() {
+      document.getElementById("videoModal5").style.display = "flex";
+    }
+    function closeModal5() {
+      document.getElementById("videoModal5").style.display = "none";
+    }
+
+    function openModal6() {
+      document.getElementById("videoModal6").style.display = "flex";
+    }
+     function closeModal6() {
+      document.getElementById("videoModal6").style.display = "none";
+    }
+
+  </script>
+
+</body>
+</html>
